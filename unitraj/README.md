@@ -2,7 +2,7 @@
 
 This folder extends the **Unitraj** framework to support **causal analysis** in trajectory prediction models. Our modifications include causal regularization techniques and counterfactual generation to evaluate the causal influence of individual agents in driving scenarios.
 
-## 📂 Code Structure
+## Code Structure
 
 ```
 unitraj/
@@ -50,7 +50,7 @@ Two causal regularizers were introduced:
 - **Ranking Loss (`calc_ranking_loss`)**: Enforces a margin between factual and causal counterfactuals for better separation.
 
 
-## 📈 Causal Metrics: ACE Calculation
+## Causal Metrics: ACE Calculation
 
 The **Average Causal Effect (ACE)** metrics were introduced to quantify the causal relationships between agents.
 

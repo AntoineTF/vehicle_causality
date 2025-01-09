@@ -194,7 +194,7 @@ You can adjust the following parameters directly in the `convert_pg.py` and `aut
 
 ## Citation
 
-If you use this repository in your research, please cite **ScenarioNet** and **MetaDrive**:
+If you use this repository in your research, please cite **ScenarioNet**, **MetaDrive** and **UniTraj**:
 
 ```
 @article{li2023scenarionet,
@@ -208,5 +208,11 @@ If you use this repository in your research, please cite **ScenarioNet** and **M
   author={Li, Quanyi et al.},
   journal={IEEE Transactions on Pattern Analysis and Machine Intelligence},
   year={2022}
+}
+@article{feng2024unitraj,
+  title={UniTraj: A Unified Framework for Scalable Vehicle Trajectory Prediction},
+  author={Feng, Lan and Bahari, Mohammadhossein and Amor, Kaouther Messaoud Ben and Zablocki, {\'E}loi and Cord, Matthieu and Alahi, Alexandre},
+  journal={arXiv preprint arXiv:2403.15098},
+  year={2024}
 }
 ```
