@@ -1,5 +1,17 @@
 # ScenarioNet: Key Components and Functions in the Pipeline
 
+## How to Run the Pipeline
+To run the entire scenario generation pipeline, use the following command in your terminal:
+```bash
+python convert_pg.py --database_path /path/to/save/data --num_scenarios 100 --num_workers 8 --start_index 0 --overwrite
+```
+### Key Arguments Explained:
+- `-d`or `--database_pat`: Path wehere the generated data will be stored.
+- `--num_scenarios`:Number of scenarios to generate.
+- `--num_workers`: Number of CPU cores for parallel processing.
+- `--start_index`: Starting index for scenario generation (useful for parallelization).
+- `--overwrite`: If set, existing data in the specified path will be overwritten.
+
 ## Key Components and Functions in the Pipeline
 
 ### **1. `convert_pg.py` (Main File)**
@@ -68,7 +80,49 @@
 - **Process:**
    - Checks how long a vehicle remained in a valid state (not crashing or going off-road).
 
----
+## 📁 Output File Structure
+When you run the pipeline and specify a directory (e.g., `--database_path simulation`), the pipeline will create a structured dataset for procedural driving simulations and counterfactual analysis.
+
+### 📦 Folder Structure Overview:
+```php
+simulation/                                                     # Main output folder
+│
+├── dataset_mapping.pkl                                         # Summary mapping for all simulations in the dataset
+├── dataset_summary.pkl                                         # Overview and metadata for all simulations
+│
+├── simulation_0/                                               # Subfolder for the first worker's batch of scenarios
+│   ├── dataset_mapping.pkl                                     # Summary mapping for this worker's simulations
+│   ├── dataset_summary.pkl                                     # Metadata summary for this worker's scenarios
+│   ├── sd_pg_MetaDrive v0.4.2.3_PGMap-0_start_78.pkl           # Main scenario file
+│   ├── sd_pg_MetaDrive v0.4.2.3_PGMap-0_start_78_child_0.pkl   # Counterfactual file 1
+│   ├── sd_pg_MetaDrive v0.4.2.3_PGMap-0_start_78_child_1.pkl   # Counterfactual file 2
+│   └── ...                   
+│
+├── simulation_1/                                               # Subfolder for the second worker's batch of scenarios
+│   └── (Same structure as above)
+│
+└── ...                                                         # More simulation subfolders depending on the number of workers
+
+```
+#### 📊 **Main Files:**
+- `dataset_mapping.pkl` (in the root and subfolders):
+    - Contains a mapping of all generated scenario files.
+    - Provides easy access to locate each scenario and its counterfactuals.
+- `dataset_summary.pkl` (in the root and subfolders):
+    - Provides a summary of the entire dataset including metadata such as the number of scenarios, number of counterfactuals generated, and scenario lengths.
+#### 📈 **Simulation Files:**
+##### **1. Primary Simulation File:**
+- Example: `sd_pg_MetaDrive v0.4.2.3_PGMap-0_start_78.pkl`
+- Expanation: 
+    - `"sd_pg_MetaDrive v0.4.2.3_PGMap"`: This prefix is standard for all procedural generation scenarios.
+    - `-0`: Refers to the map ID. Here, the scenario was generated on map 0.
+    - `start_78`: This indicates that the simulation started from timestep 78 instead of the beginning. The starting timestep was chosen because the algorithm identified a complex driving interaction at this point, determined using the `find_most_complex_timeframe` function.
+##### **2. Counterfactual Files:**
+- Example: `sd_pg_MetaDrive v0.4.2.3_PGMap-0_start_78_child_0.pkl`
+- Expanation: 
+    - `"child_0"`: indicates the first counterfactual scenario generated from the original simulation.
+    - Each counterfactual file represents a modified version of the primary simulation where one agent (vehicle) was removed to study the causal effect of its presence.
+    - There will be as many child files as there are non-ego vehicles in the original scenario.
 
 ## 🛠️ Customizing Scenario Generation
 
@@ -93,3 +147,16 @@ You can customize various aspects of the simulation by adjusting parameters in t
 - **Causal Analysis:** Study how removing vehicles affects collision probabilities.
 - **Trajectory Prediction Evaluation:** Generate complex driving situations for testing trajectory prediction models.
 - **Reinforcement Learning Training:** Create diverse driving datasets for policy learning in self-driving cars.
+
+## 📖 Citation
+
+This work builds on **ScenarioNet**, an open-source platform for large-scale traffic scenario simulation and modeling. If you use this repository or extend it for your own work, please cite the original authors:
+
+```bibtex
+@article{li2023scenarionet,
+  title={ScenarioNet: Open-Source Platform for Large-Scale Traffic Scenario Simulation and Modeling},
+  author={Li, Quanyi and Peng, Zhenghao and Feng, Lan and Liu, Zhizheng and Duan, Chenda and Mo, Wenjie and Zhou, Bolei},
+  journal={Advances in Neural Information Processing Systems},
+  year={2023}
+}
+```
