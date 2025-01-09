@@ -62,10 +62,14 @@ The **nuScenes** dataset is available at:
 
 Two **out-of-distribution (OOD)** datasets were created for evaluating model generalization:
 
-1. **Modified Traffic Density:** Adjusted vehicle density to test performance under varying traffic conditions.
-2. **Different Policy Control:** Altered the control policy for non-ego agents.
+1. **Modified Traffic Density:** 
+- Adjusted vehicle density to test performance under varying traffic conditions.
+- Directory: `/work/vita/datasets/vehicle_causality/ood/ood_td_cf_c`
+2. **Different Policy Control:** 
+- Altered the control policy for non-ego agents.
+- Directory: `/work/vita/datasets/vehicle_causality/ood/ood_idm_c_cf`
 
-Each dataset contains approximately **200 simulations**.
+Each dataset contains approximately **200 simulations**. 
 
 ## Baseline Experiments
 
