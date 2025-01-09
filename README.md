@@ -31,6 +31,11 @@ cd ..
 cd scenarionet
 pip install -e .
 
+# Install the modified version of UniTraj
+cd ..
+cd unitraj 
+pip install -r requirements.txt
+python setup.py develop
 ```
 
 ## Dataset information
