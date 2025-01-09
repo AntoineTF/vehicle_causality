@@ -19,7 +19,7 @@ conda create -n vehicle_causality python=3.9
 conda activate vehicle_causality
 
 # Clone the repository
-cd ~
+cd ~/  # Go to the folder you want to host these three repos.
 git clone https://github.com/AntoineTF/vehicle_causality.git
 
 # Install MetaDrive Simulator
