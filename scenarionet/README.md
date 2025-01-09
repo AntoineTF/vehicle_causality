@@ -124,6 +124,17 @@ simulation/                                                     # Main output fo
     - Each counterfactual file represents a modified version of the primary simulation where one agent (vehicle) was removed to study the causal effect of its presence.
     - There will be as many child files as there are non-ego vehicles in the original scenario.
 
+## 🔧 Post-Processing with `merging_c_cf.py`
+After running the ScenarioNet pipeline, you need to merge the factual and counterfactual files into a single file to prepare the data for use in UniTraj.
+Run the following command:
+```python
+python merging_c_cf.py --base_directory /path/to/simulation --output_directory /path/to/merged_data
+```
+### What it Does:
+- Combines the factual and counterfactual files for each simulation.
+- Formats the dataset correctly for use with UniTraj.
+- Merges metadata for easier downstream use.
+
 ## 🛠️ Customizing Scenario Generation
 
 You can customize various aspects of the simulation by adjusting parameters in the **`convert_pg.py`** file:
@@ -141,12 +152,6 @@ You can customize various aspects of the simulation by adjusting parameters in t
 - ✅ **Parallelization:** The process can run across multiple CPU cores for faster data generation.
 - ✅ **Reproducibility:** Custom seeds and fixed vehicle configurations ensure reproducible results.
 - ✅ **Flexible Customization:** Traffic density, policies, and other settings can be adjusted for experimentation.
-
-## 📊 Example Use Cases for This Pipeline
-
-- **Causal Analysis:** Study how removing vehicles affects collision probabilities.
-- **Trajectory Prediction Evaluation:** Generate complex driving situations for testing trajectory prediction models.
-- **Reinforcement Learning Training:** Create diverse driving datasets for policy learning in self-driving cars.
 
 ## 📖 Citation
 
