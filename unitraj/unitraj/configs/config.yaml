@@ -1,0 +1,79 @@
+# Experiment Settings
+exp_name: "evaluate_synth_ood_idm_no_reg" # Name used to save the model and in WandB
+ckpt_path: null # Path to the model checkpoint for resuming training (exemple: ~/training_pg_full_data_ego/epoch=91-val/brier_fde=1.21.ckpt)
+seed: 42        # Random seed for reproducibility                                                                  
+debug: False    # Debug mode, uses CPU only
+devices: [0]    # GPU IDs for training
+
+# Causal Analysis
+return_embeddings: True
+
+# Data Loading Parameters
+load_num_workers: 4 # number of workers for loading data
+train_data_path: [
+    "/work/vita/datasets/vehicle_causality/merged_cf_f/simulation1",
+    # Uncomment to include additional datasets
+    # "/work/vita/datasets/vehicle_causality/merged_cf_f/simulation18",
+    # "/work/vita/datasets/vehicle_causality/merged_cf_f/simulation2",
+    # "/work/vita/datasets/vehicle_causality/merged_cf_f/simulation20",
+    # "/work/vita/datasets/vehicle_causality/merged_cf_f/simulation21",
+    # "/work/vita/datasets/vehicle_causality/merged_cf_f/simulation23",
+    # "/work/vita/datasets/vehicle_causality/merged_cf_f/simulation25",
+    # "/work/vita/datasets/vehicle_causality/merged_cf_f/simulation26",
+    # "/work/vita/datasets/vehicle_causality/merged_cf_f/simulation28",
+    # "/work/vita/datasets/vehicle_causality/merged_cf_f/simulation3",
+    # "/work/vita/datasets/vehicle_causality/merged_cf_f/simulation30",
+    # "/work/vita/datasets/vehicle_causality/merged_cf_f/simulation32",
+    # "/work/vita/datasets/vehicle_causality/merged_cf_f/simulation33",
+    # "/work/vita/datasets/vehicle_causality/merged_cf_f/simulation35",
+    #"/work/vita/datasets/Scenarionet_Dataset/train/nuscenes",
+  ]
+
+val_data_path:
+  [
+    "/work/vita/datasets/vehicle_causality/merged_cf_f/simulation36",
+    # Uncomment to include additional datasets
+    #"/work/vita/datasets/Scenarionet_Dataset/validation/nuscenes",
+    #"/work/vita/datasets/vehicle_causality/ood/ood_idm_c_cf/"
+    #"/work/vita/datasets/vehicle_causality/sim_ood_idm_merged/sim_ood_idm_long_1",
+  ]
+
+cache_path: "/work/vita/datasets/vehicle_causality/cache/cache_synth" 
+
+# Data Management
+max_data_num: [null, null, null, null, null, null, null, null, null, null, null, null, null, null]  # maximum number of data for each training dataset, null means all data
+starting_frame: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]  # history trajectory starts at this frame for each training dataset
+
+# Trajectory Parameters
+past_len: 21                  # Length of historical trajectory (2.1 seconds)
+future_len: 60                # Length of future trajectory (6 seconds)
+trajectory_sample_interval: 1 # Interval for sampling the trajectory
+
+# Object and Line Filtering
+object_type: ["VEHICLE"]  # Object types included in the training set VEHICLE, PEDESTRIAN, BYCICLE
+line_type: [              # Line types to be considered in the input
+    "lane",
+    "stop_sign",
+    "road_edge",
+    "road_line",
+    "crosswalk",
+    "speed_bump",
+  ] 
+masked_attributes: ["z_axis", "size"] # Attributes to mask in input data
+
+# Training Configurations
+only_train_on_ego: True           # Only train on the ego vehicle
+center_offset_of_map: [30.0, 0.0] # Offset for map centering
+use_cache: False                  # Use cached data
+overwrite_cache: False            # Overwrite existing cache
+store_data_in_memory: False       # Keep data in memory for faster access
+
+# Evaluation Settings
+nuscenes_dataroot: "/mnt/nas3_rcp_enac_u0900_vita_scratch/datasets/Prediction-Dataset/nuscenes/nuscenes_root"
+eval_nuscenes: False        # Evaluate using the NuScenes toolkit
+eval_waymo: False           # Evaluate using the Waymo toolkit
+eval_argoverse2: False      # Evaluate using the Argoverse2 toolkit
+
+# Method Configuration
+defaults:
+  - method: autobot

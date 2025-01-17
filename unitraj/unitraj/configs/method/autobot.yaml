@@ -1,0 +1,42 @@
+# Model Configuration
+model_name: autobot               # Model architecture name
+num_modes: 6                      # Number of output modes for trajectory prediction
+hidden_size: 128                  # Size of hidden layers in the model
+num_encoder_layers: 2             # Number of layers in the encoder
+num_decoder_layers: 2             # Number of layers in the decoder
+tx_hidden_size: 384               # Transformer hidden size
+tx_num_heads: 16                  # Number of attention heads
+dropout: 0.1                      # Dropout rate for regularization
+entropy_weight: 40.0              # Weight for entropy loss
+kl_weight: 20.0                   # Weight for KL divergence loss
+use_FDEADE_aux_loss: True         # Use FDE and ADE auxiliary loss during training
+
+# Causality Settings
+return_embeddings: True          # Return embeddings for causal analysis
+reg_type: "ranking"              # Type of regularization: "contrastive", "ranking" or "no_reg"
+contrastive_weight: 1000         # Weight for contrastive loss
+ranking_weight: 1                # Weight for ranking loss
+
+# Training Settings
+max_epochs: 40                    # Maximum number of training epochs
+learning_rate: 0.00075            # Initial learning rate
+learning_rate_sched: [10, 20, 30, 40, 50] # Epochs to reduce the learning rate
+optimizer: Adam                   # Optimizer for gradient updates
+scheduler: multistep              # Learning rate scheduler type: multistep or plateau
+ewc_lambda: 2000                  # Elastic weight consolidation lambda parameter
+train_batch_size: 16              # Batch size for training
+eval_batch_size: 128              # Batch size for evaluation
+grad_clip_norm: 5                 # Gradient clipping norm for stability
+
+# Data Configuration
+max_num_agents: 15                # Maximum number of agents per scene
+map_range: 100                    # Range for map coverage around the agent
+max_num_roads: 256                # Maximum number of roads considered
+max_points_per_lane: 20           # Maximum points per lane (if not split manually)
+
+# Lane Splitting Configuration
+manually_split_lane: False        # If True, manually split lanes into segments
+point_sampled_interval: 1         # Interval for sampling points (if manually splitting lanes)
+num_points_each_polyline: 20      # Number of points per polyline (if manually splitting lanes)
+vector_break_dist_thresh: 1.0     # Distance threshold to break vectors for lane splitting
+
