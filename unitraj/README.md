@@ -41,6 +41,7 @@ unitraj/
 
 - **Contrastive Projector:** Added a contrastive projector for generating embeddings suitable for causal analysis.
 - **Forward Pass Changes (`_forward` method):** Processes both factual and counterfactual embeddings.
+- The code overall is now modified to be **counterfactual friendly**.
 
 ### **3. Loss Functions:**
 
