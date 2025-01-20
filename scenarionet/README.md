@@ -135,7 +135,7 @@ python merging_c_cf.py --base_directory /path/to/simulation --output_directory /
 - Formats the dataset correctly for use with UniTraj.
 - Merges metadata for easier downstream use.
 
-## 🛠️ Customizing Scenario Generation
+##  Customizing Scenario Generation
 
 You can customize various aspects of the simulation by adjusting parameters in the **`convert_pg.py`** file:
 

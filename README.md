@@ -176,8 +176,6 @@ python merging_c_cf.py --base_directory <path_to_data> --output_directory <new_p
 The generated datasets are structured as follows:
 
 ```
-plaintext
-Copier le code
 simulation/                              # Main output folder
 ├── dataset_mapping.pkl                  # Summary mapping for all simulations
 ├── dataset_summary.pkl                  # Overview of the dataset
