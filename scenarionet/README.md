@@ -80,10 +80,10 @@ python convert_pg.py --database_path /path/to/save/data --num_scenarios 100 --nu
 - **Process:**
    - Checks how long a vehicle remained in a valid state (not crashing or going off-road).
 
-## 📁 Output File Structure
+## Output File Structure
 When you run the pipeline and specify a directory (e.g., `--database_path simulation`), the pipeline will create a structured dataset for procedural driving simulations and counterfactual analysis.
 
-### 📦 Folder Structure Overview:
+### Folder Structure Overview:
 ```php
 simulation/                                                     # Main output folder
 │
@@ -104,13 +104,13 @@ simulation/                                                     # Main output fo
 └── ...                                                         # More simulation subfolders depending on the number of workers
 
 ```
-#### 📊 **Main Files:**
+#### **Main Files:**
 - `dataset_mapping.pkl` (in the root and subfolders):
     - Contains a mapping of all generated scenario files.
     - Provides easy access to locate each scenario and its counterfactuals.
 - `dataset_summary.pkl` (in the root and subfolders):
     - Provides a summary of the entire dataset including metadata such as the number of scenarios, number of counterfactuals generated, and scenario lengths.
-#### 📈 **Simulation Files:**
+#### **Simulation Files:**
 ##### **1. Primary Simulation File:**
 - Example: `sd_pg_MetaDrive v0.4.2.3_PGMap-0_start_78.pkl`
 - Expanation: 
@@ -124,7 +124,7 @@ simulation/                                                     # Main output fo
     - Each counterfactual file represents a modified version of the primary simulation where one agent (vehicle) was removed to study the causal effect of its presence.
     - There will be as many child files as there are non-ego vehicles in the original scenario.
 
-## 🔧 Post-Processing with `merging_c_cf.py`
+##  Post-Processing with `merging_c_cf.py`
 After running the ScenarioNet pipeline, you need to merge the factual and counterfactual files into a single file to prepare the data for use in UniTraj.
 Run the following command:
 ```python
@@ -145,15 +145,15 @@ You can customize various aspects of the simulation by adjusting parameters in t
 - **Accident Probability (`accident_prob`)**: Set the probability of a crash occurring in the scenario.
 - **Custom Seeds (`custom_seeds`)**: Use fixed seeds for reproducibility.
 
-## 🎯 Key Insights and Features
+##  Key Insights and Features
 
-- ✅ **Crash Filtering:** Scenarios where a crash occurs are automatically discarded to maintain dataset quality.
-- ✅ **Counterfactual Generation:** Each complex moment can be modified by selectively removing vehicles and rerunning the simulation.
-- ✅ **Parallelization:** The process can run across multiple CPU cores for faster data generation.
-- ✅ **Reproducibility:** Custom seeds and fixed vehicle configurations ensure reproducible results.
-- ✅ **Flexible Customization:** Traffic density, policies, and other settings can be adjusted for experimentation.
+-  **Crash Filtering:** Scenarios where a crash occurs are automatically discarded to maintain dataset quality.
+-  **Counterfactual Generation:** Each complex moment can be modified by selectively removing vehicles and rerunning the simulation.
+-  **Parallelization:** The process can run across multiple CPU cores for faster data generation.
+-  **Reproducibility:** Custom seeds and fixed vehicle configurations ensure reproducible results.
+-  **Flexible Customization:** Traffic density, policies, and other settings can be adjusted for experimentation.
 
-## 📖 Citation
+##  Citation
 
 This work builds on **ScenarioNet**, an open-source platform for large-scale traffic scenario simulation and modeling. If you use this repository or extend it for your own work, please cite the original authors:
 
