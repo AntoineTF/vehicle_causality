@@ -65,12 +65,12 @@ Two **out-of-distribution (OOD)** datasets were created for evaluating model gen
 
 1. **Modified Traffic Density:** 
 - Adjusted vehicle density to test performance under varying traffic conditions.
-- Directory: `/work/vita/datasets/vehicle_causality/ood/ood_td_cf_c`
+- Directory: `/work/vita/datasets/vehicle_causality/ood/large_datasets/sim_ood_td_merged`
 2. **Different Policy Control:** 
 - Altered the control policy for non-ego agents.
-- Directory: `/work/vita/datasets/vehicle_causality/ood/ood_idm_c_cf`
+- Directory: `/work/vita/datasets/vehicle_causality/ood/large_datasets/sim_ood_idm_merged`
 
-Each dataset contains approximately **200 simulations**. 
+Each dataset contains approximately **2000 simulations**. 
 
 ## Baseline Experiments
 
@@ -118,7 +118,7 @@ starting_frame: [0, 0,...]
 
 To train a model with causal regularization, update the **`autobot.yaml`** file:
 
-- Set **`ret_embeddings: True`** (enables causal metrics).
+- Set **`ret_embeddings: True`** (enables causal metrics, should also be set as True in `config.yaml`).
 - Adjust the regularization type (`reg_type`):
     - `"contrastive"`: for contrastive causal regularization
     - `"ranking"`: for ranking-based regularization
