@@ -171,7 +171,7 @@ After running **ScenarioNet (see ScenarioNet folder)**, the factual and counterf
 python merging_c_cf.py --base_directory <path_to_data> --output_directory <new_path>
 ```
 
-## 📂 Output File Structure
+##  Output File Structure
 
 The generated datasets are structured as follows:
 
@@ -252,7 +252,7 @@ We evaluated the models under **higher traffic density** and **policy shifts**.
 | Model | ACE ALL ↓ | ACE DC ↓ | ACE NC ↓ | Brier FDE ↓ | minADE6 ↓ | minFDE6 ↓ | Miss Rate ↓ |
 |-------|----------|----------|----------|------------|-----------|-----------|-------------|
 | Ranking **λ = 1000** | 103.43 | 653.02 | 13.17 | 4.62 | 2.31 | 3.86 | 0.41 |
-| Contrastive **λ = 1000** | 101.49 | 652.2 | 12.75 | 5.33 | 2.7 | 4.58 | 0.44 |
+| Contrastive **λ = 100** | 101.19 | 654.4 | 11.46 | 4.88 | 2.5 | 4.13 | 0.43 |
 
 ### OOD - Policy Shift (IDM instead of Expert Policy)
 
