@@ -1,6 +1,8 @@
 # Vehicle Causality Project: Causal Analysis for Autonomous Driving
 
-This project introduces a framework for **causal analysis** in autonomous driving simulations, designed to investigate how the presence or absence of specific vehicles influences the behavior of the ego vehicle.
+This project was developed at the [VITA Lab (Visual Intelligence for Transportation), EPFL](https://www.epfl.ch/labs/vita/).
+It investigates causal reasoning in autonomous driving simulations, introducing a framework that selectively removes vehicles from traffic scenes to analyze their influence on the ego vehicle’s trajectory.
+Two causal regularization strategies are proposed to improve model robustness and generalization under out-of-distribution conditions.
 
 ### Key Contributions:
 
