@@ -1,17 +1,13 @@
 # Vehicle Causality Project: Causal Analysis for Autonomous Driving
 
-> Keywords: Causal Inference · Autonomous Driving · Simulation · Out-of-Distribution Generalization
+## Overview
 
-**Technologies:** Python, PyTorch, MetaDrive, ScenarioNet, UniTraj, Conda
+Developed at the [VITA Lab (Visual Intelligence for Transportation), EPFL](https://www.epfl.ch/labs/vita/), this project studies how autonomous driving policies react to causal interventions. We generate counterfactual simulations by selectively removing vehicles, train trajectory prediction models with causal regularization, and measure how interventions improve robustness under distribution shifts.
 
 <p align="center">
   <img src="docs/media/causal_framework_overview.jpg" alt="Conceptual overview of the causal analysis pipeline" width="640"/>
 </p>
 <p align="center"><em>Causal Framework Overview</em></p>
-
-## Overview
-
-Developed at the [VITA Lab (Visual Intelligence for Transportation), EPFL](https://www.epfl.ch/labs/vita/), this project studies how autonomous driving policies react to causal interventions. We generate counterfactual simulations by selectively removing vehicles, train trajectory prediction models with causal regularization, and measure how interventions improve robustness under distribution shifts.
 
 ## Key Contributions
 
